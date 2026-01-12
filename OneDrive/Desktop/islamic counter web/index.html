@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <div class="card">
+            <header>
+                <h1>Islamic Counter</h1>
+                
+                <div class="select-container">
+                    <select id="dhikr-select" onchange="resetCount()">
+                        <option value="SubhanAllah">SubhanAllah</option>
+                        <option value="Alhamdulillah">Alhamdulillah</option>
+                        <option value="Allahu Akbar">Allahu Akbar</option>
+                        <option value="Astaghfirullah">Astaghfirullah</option>
+                        <option value="La ilaha illallah">La ilaha illallah</option>
+                    </select>
+                    <span class="custom-arrow">▼</span>
+                </div>
+            </header>
+
+            <div class="display-area">
+                <span id="counter">0</span>
+            </div>
+
+            <div class="controls">
+                <button class="btn reset-btn" onclick="resetCount()">Reset</button>
+                <button class="btn count-btn" onclick="incrementCount()">Count</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let count = 0;
+        
+        // This line finds the <span id="counter"> element
+        const display = document.getElementById('counter');
+
+        function incrementCount() {
+            count++;
+            display.innerText = count;
+        }
+
+        function resetCount() {
+            count = 0;
+            display.innerText = count;
+        }
+    </script>
+</body>
+</html>
+
+
+               
+                    
+            
+
+            
+
+
+    
