@@ -10,6 +10,7 @@ Usage
 - Open `index.html` in a browser to use the counter.
 
 Challenges Faced
+
 -buttons weren't working
 
 -Numbers weren't incrementing
