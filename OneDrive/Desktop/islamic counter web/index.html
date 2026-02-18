@@ -3,64 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic Counter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Noor Counter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. THE BACKGROUND (The Universe) --- */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Deep Midnight Gradient */
+            background: linear-gradient(135deg, #09121D, #16243b);
+            color: white;
+            font-family: 'Amiri', serif;
+            overflow: hidden; /* Prevents scrollbars */
+        }
+
+        /* --- 2. THE GLASS CARD (The Futuristic Container) --- */
+        .card {
+            background: rgba(255, 255, 255, 0.05); /* Very see-through */
+            backdrop-filter: blur(15px); /* The "Frosted Glass" effect */
+            -webkit-backdrop-filter: blur(15px); /* For Safari */
+            width: 320px;
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle Gold Border */
+            box-shadow: 0 0 40px rgba(0, 255, 170, 0.1); /* Soft Green Glow behind card */
+            text-align: center;
+        }
+
+        /* --- 3. TYPOGRAPHY & ELEMENTS --- */
+        h1 {
+            color: #D4AF37; /* Islamic Gold */
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Styled Dropdown */
+        .select-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #D4AF37;
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            outline: none;
+            cursor: pointer;
+            appearance: none; /* Hides default arrow */
+        }
+
+        /* --- 4. THE NEON COUNTER --- */
+        .display-area {
+            margin: 30px 0;
+        }
+
+        #counter {
+            font-family: 'Orbitron', sans-serif; /* Sci-fi Font */
+            font-size: 5rem;
+            color: #00ffa3; /* Cyber Green */
+            text-shadow: 0 0 20px rgba(0, 255, 163, 0.6); /* The Neon Glow */
+            transition: transform 0.1s ease;
+            display: inline-block;
+        }
+
+        /* --- 5. THE BUTTONS --- */
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .count-btn {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+            color: #09121D;
+            flex-grow: 2;
+            box-shadow: 0 0 15px rgba(0, 255, 163, 0.4);
+        }
+
+        .count-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 25px rgba(0, 255, 163, 0.8);
+        }
+
+        .reset-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #aaa;
+            flex-grow: 1;
+        }
+
+        .reset-btn:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+
+    </style>
 </head>
 <body>
 
-    <main class="container">
-        <div class="card">
-            <header>
-                <h1>Islamic Counter</h1>
-                
-                <div class="select-container">
-                    <select id="dhikr-select" onchange="resetCount()">
-                        <option value="SubhanAllah">SubhanAllah</option>
-                        <option value="Alhamdulillah">Alhamdulillah</option>
-                        <option value="Allahu Akbar">Allahu Akbar</option>
-                        <option value="Astaghfirullah">Astaghfirullah</option>
-                        <option value="La ilaha illallah">La ilaha illallah</option>
-                    </select>
-                    <span class="custom-arrow">▼</span>
-                </div>
-            </header>
-
-            <div class="display-area">
-                <span id="counter">0</span>
+    <div class="card">
+        <header>
+            <h1>TASBIH</h1>
+            <div class="select-container">
+                <select id="dhikr-select" onchange="resetCount()">
+                    <option value="SubhanAllah">SubhanAllah</option>
+                    <option value="Alhamdulillah">Alhamdulillah</option>
+                    <option value="Allahu Akbar">Allahu Akbar</option>
+                    <option value="Astaghfirullah">Astaghfirullah</option>
+                </select>
             </div>
+        </header>
 
-            <div class="controls">
-                <button class="btn reset-btn" onclick="resetCount()">Reset</button>
-                <button class="btn count-btn" onclick="incrementCount()">Count</button>
-            </div>
+        <div class="display-area">
+            <span id="counter">0</span>
         </div>
-    </main>
+
+        <div class="controls">
+            <button class="btn reset-btn" onclick="resetCount()">RESET</button>
+            <button class="btn count-btn" onclick="incrementCount()">COUNT</button>
+        </div>
+    </div>
 
     <script>
         let count = 0;
-        
-        // This line finds the <span id="counter"> element
         const display = document.getElementById('counter');
 
         function incrementCount() {
             count++;
             display.innerText = count;
+            
+            // Nice feature: Vibrate phone on click (works on Android)
+            if (navigator.vibrate) {
+                navigator.vibrate(50); 
+            }
+
+            // Visual effect: slightly scale the number up when clicking
+            display.style.transform = "scale(1.1)";
+            setTimeout(() => {
+                display.style.transform = "scale(1)";
+            }, 100);
         }
 
         function resetCount() {
-            count = 0;
-            display.innerText = count;
+            // Confirm before resetting (to prevent accidents)
+            if(count > 0) {
+                 if(confirm("Are you sure you want to reset your Dhikr?")) {
+                    count = 0;
+                    display.innerText = count;
+                 }
+            } else {
+                count = 0;
+                display.innerText = count;
+            }
         }
     </script>
 </body>
 </html>
-
-
-               
-                    
-            
-
-            
-
-
-    
